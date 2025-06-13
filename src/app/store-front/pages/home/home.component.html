@@ -1,0 +1,12 @@
+<div class="ml-5">
+  <h1 class="text-3xl font-bold font-Montserrat"> Todos los productos</h1>
+  <h2 class="text-xl mb-5">Para todos los gustos</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-2 gap-3 ml-5">
+  @for (producto of productos(); track $index) {
+    <product-card [product]="producto" />
+  }
+  @empty {
+    <p>No hay Productos</p>
+  }
+</div>

@@ -1,0 +1,12 @@
+<div class="card bg-base-100  shadow-sm animate-fadeIn">
+    <figure>
+      <img [src]="product().images | productImage" [alt]="product().title" />
+    </figure>
+    <div class="card-body">
+      <a class="card-title font-Montserrat text-accent text-xl " [routerLink]="['/product',product().slug]" >{{product().title}}</a>
+      <p>{{product().description | slice: 0:80}} ...</p>
+      <div class="card-actions justify-end">
+        <a class="btn btn-primary" [routerLink]="['/product',product().slug]">Información</a>
+      </div>
+    </div>
+  </div>
