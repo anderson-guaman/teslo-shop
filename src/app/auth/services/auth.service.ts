@@ -31,8 +31,9 @@ export class AuthService {
     return 'not-authenticated';
   });
 
-  user = computed<IUser | null>(() => this._user());
+  user = computed(() => this._user());
   token = computed(this._token)
+  isAdmin = computed(()=> this._user()?.roles.includes('admin') ?? false)
 
   login(email: string, password: string): Observable<boolean> {
     return this.http.post<AuthResponse>(`${baseUrl}/auth/login`, {
@@ -52,9 +53,9 @@ export class AuthService {
     };
     return this.http
       .get<AuthResponse>(`${baseUrl}/auth/check-status`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        },
+        // headers: {
+        //   Authorization: `Bearer ${token}`
+        // },
       }).pipe(
         map(response => this.handleAuthSuccess(response)),
         catchError((error: any) => this.handleAuthError(error)),

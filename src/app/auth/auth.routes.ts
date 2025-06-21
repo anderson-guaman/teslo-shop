@@ -9,18 +9,18 @@ export const authRoutes: Routes = [
     component: AuthLayoutComponent,
     children: [
       {
-        path: 'register',
-        component: RegisterComponent
-      },
-      {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
       },
     ]
   },
   {
     path:'**',
-    redirectTo:''
+    redirectTo:'login'
   },
 ]
 

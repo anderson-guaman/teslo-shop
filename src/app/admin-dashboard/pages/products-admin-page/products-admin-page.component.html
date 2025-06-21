@@ -1,0 +1,9 @@
+
+<h1 class="text-2xl font-bold">Listado de productos</h1>
+<h3 class="text-lg">Total de producto
+  <span class="text-accent "> {{productsResource.value()?.count}} </span>
+</h3>
+<div class="divider"></div>
+
+<!-- Listado de productos  -->
+<product-table [products]="productsResource.value()?.products ?? []"/>
