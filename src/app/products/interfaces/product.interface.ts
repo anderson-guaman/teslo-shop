@@ -7,7 +7,7 @@ export interface IProductsResponse {
 }
 
 export interface IProduct {
-  id:          string;
+  id?:          string;
   title:       string;
   price:       number;
   description: string;
@@ -17,7 +17,7 @@ export interface IProduct {
   gender:      string;
   tags:        string[];
   images:      string[];
-  user:        IUser;
+  user?:        IUser;
 }
 
 

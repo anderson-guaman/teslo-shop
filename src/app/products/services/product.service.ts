@@ -34,4 +34,8 @@ export class ProductService {
     return this.http.get<IProduct>(`${baseUrl}/products/${filter}`)
   }
 
+  crearProducto(product:IProduct):Observable<IProduct>{
+    return this.http.post<IProduct>(`${baseUrl}/products`,product)
+  }
+
 }

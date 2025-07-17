@@ -4,8 +4,6 @@ import { HomeComponent } from "./pages/home/home.component";
 import { GenderComponent } from "./pages/gender/gender.component";
 import { ProductComponent } from "./pages/product/product.component";
 import { NotFoundPageComponent } from "./pages/not-found-page/not-found-page.component";
-import { RegisterComponent } from "../auth/pages/register/register.component";
-
 
 export const storeFrontRoutes: Routes = [
   {

@@ -3,8 +3,6 @@ import { IProduct } from 'src/app/products/interfaces/product.interface';
 import { ProductCarouselComponent } from 'src/app/store-front/components/product-carousel/product-carousel.component';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@ANGULAR/forms';
 import { FormUtils } from 'src/app/utils/forms.utils';
-
-
 @Component({
   selector: 'product-details',
   imports: [

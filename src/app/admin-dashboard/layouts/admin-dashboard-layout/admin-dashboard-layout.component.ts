@@ -1,5 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { SupabaseAuthService } from 'src/app/auth/services/auth-supabase.service';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -14,6 +15,19 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class AdminDashboardLayoutComponent {
 
   authService = inject(AuthService);
+  authSupabase = inject(SupabaseAuthService);
+  router = inject(Router);
+
+  async logout(){
+    try {
+      await this.authSupabase.signOut();
+      // await this.supabaseService.signIn(email!,password!);
+      this.router.navigateByUrl('/')
+    } catch (error) {
+      alert(error)
+      // this.router.navigateByUrl('/')
+    }
+  }
 
   user = computed(() => this.authService.user())
 }

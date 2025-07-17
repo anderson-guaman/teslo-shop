@@ -50,25 +50,25 @@
       <button
         type="button"
         class="btn btn-sm"
-        [class.btn-accent]="productForm.value.gender == 'women'"
+        [class.btn-accent]="productForm.value.gender === 'women'"
         (click)="productForm.patchValue({gender:'women'})"
       >Femenino</button>
       <button
         type="button"
         class="btn btn-sm"
-        [class.btn-warning]="productForm.value.gender == 'kid'"
+        [class.btn-warning]="productForm.value.gender === 'kid'"
         (click)="productForm.patchValue({gender:'kid'})"
       >Kid</button>
       <button
         type="button"
         class="btn btn-sm"
-        [class.btn-secondary]="productForm.value.gender == 'unisex'"
+        [class.btn-secondary]="productForm.value.gender === 'unisex'"
         (click)="productForm.patchValue({gender:'unisex'})"
       >Unisex</button>
       <button
         type="button"
         class="btn btn-sm"
-        [class.btn-primary]="productForm.value.gender == 'men'"
+        [class.btn-primary]="productForm.value.gender === 'men'"
         (click)="productForm.patchValue({gender:'men'})"
       >Masculino</button>
     </div>

@@ -3,7 +3,7 @@ import { IUser } from '../interfaces/user.interface';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
 import { AuthResponse } from '../interfaces/auth-response.interface';
-import { catchError, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { rxResource } from '@angular/core/rxjs-interop';
 
 type AuthStatus = 'checking' | 'authenticated' | 'not-authenticated'
@@ -14,7 +14,7 @@ export class AuthService {
 
   private _authStatus = signal<AuthStatus>('checking');
   private _user = signal<IUser | null>(null);
-  private _token = signal<string | null>(localStorage.getItem('token'));
+  private _token = signal<string | null>(sessionStorage.getItem('supabaseAccessToken'));
 
   private http = inject(HttpClient);
 

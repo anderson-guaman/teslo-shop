@@ -7,7 +7,8 @@ export function authInterceptor(
   next: HttpHandlerFn
 ) {
 
-  const token = inject(AuthService).token();
+  // const token = inject(AuthService).token();
+  const token = sessionStorage.getItem('supabaseAccessToken');
 
   console.log({token})
   const newReq = req.clone({

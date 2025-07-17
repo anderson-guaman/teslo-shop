@@ -11,7 +11,5 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl: './nav-bar.component.html',
 })
 export class NavBarComponent {
-
   authService = inject(AuthService);
-
- }
+}

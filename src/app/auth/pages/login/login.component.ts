@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators} from '@ANGULAR/forms'
 import { AuthService } from '../../services/auth.service';
+import { SupabaseAuthService } from '../../services/auth-supabase.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent {
   fb = inject(FormBuilder);
   authService = inject(AuthService)
   router = inject(Router)
+  supabaseService = inject(SupabaseAuthService)
 
   hasError = signal(false);
   isPosting = signal(false);
@@ -22,7 +24,7 @@ export class LoginComponent {
     password: [ null, [ Validators.required, Validators.minLength(6) ] ]
   });
 
-  onSubmit(){
+  async onSubmit(){
     if( this.loginForm.invalid ){
       this.hasError.set(true);
       setTimeout(() => {
@@ -31,17 +33,25 @@ export class LoginComponent {
       return;
     };
     const {email, password} = this.loginForm.value;
-    this.authService.login(email!,password!)
-    .subscribe( (response) => {
-      if(response){
-        this.router.navigateByUrl('/')
-        return;
-      }
-      this.hasError.set(true);
-      setTimeout(() => {
-        this.hasError.set(false)
-      }, 2000);
-    });
+    // this.authService.login(email!,password!)
+    // .subscribe( (response) => {
+    //   if(response){
+    //     this.router.navigateByUrl('/')
+    //     return;
+    //   }
+    //   this.hasError.set(true);
+    //   setTimeout(() => {
+    //     this.hasError.set(false)
+    //   }, 2000);
+    // });
+
+    try {
+      await this.supabaseService.signIn(email!,password!);
+      this.router.navigateByUrl('/admin')
+    } catch (error) {
+      alert(error)
+      // this.router.navigateByUrl('/')
+    }
   }
 
   // check Authentication

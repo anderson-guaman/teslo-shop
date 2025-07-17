@@ -9,7 +9,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
   selector: 'app-product-admin-page',
   imports: [
     ProductDetailsComponent
-  ],
+],
   templateUrl: './product-admin-page.component.html',
 })
 export class ProductAdminPageComponent {
@@ -23,16 +23,14 @@ export class ProductAdminPageComponent {
       map(params => params['id'])
     )
   );
-
   productResource = rxResource({
-    request:()=>({id:this.productId()}),
-    loader: ({request}) =>{
+    request: () => ({ id: this.productId() }),
+    loader: ({ request }) => {
       return this.productService.getProduct(request.id);
     }
   });
-
-  redirectEffect = effect(()=>{
-    if(this.productResource.error()){
+  redirectEffect = effect(() => {
+    if (this.productResource.error()) {
       this.router.navigate(['/admin/products'])
     }
   })
